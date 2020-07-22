@@ -6,10 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(fields={"pseudo"}, message="There is already an account with this pseudo")
  */
 class User implements UserInterface
 {
@@ -162,9 +165,13 @@ class User implements UserInterface
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    /**
+     * @ORM\PrePersist()
+     * @return $this
+     */
+    public function setCreatedAt(): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = new \DateTime();
 
         return $this;
     }
@@ -174,9 +181,13 @@ class User implements UserInterface
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    /**
+     * @return $this
+     * @ORM\PreUpdate()
+     */
+    public function setUpdatedAt(): self
     {
-        $this->updated_at = $updated_at;
+        $this->updated_at = new \DateTime();
 
         return $this;
     }
