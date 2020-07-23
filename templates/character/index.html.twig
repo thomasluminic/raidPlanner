@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Classes{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h2>Mes personnages</h2>
+                <ul>
+                    {% for myCharacter in myCharacters %}
+                        <li>{{ myCharacter.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-6">
+                <h2>Ajouter un personnages à ma liste</h2>
+            {{ form_start(form) }}
+                {{ form_row(form.character) }}
+                <button class="btn btn-primary">Ajoutez</button>
+            {{ form_end(form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
