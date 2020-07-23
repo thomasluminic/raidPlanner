@@ -29,9 +29,20 @@ class Raid
     private $userCharacter;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="boolean", nullable=true)
      */
-    private $date;
+    private $dayOne;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $dayTwo;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $dayThree;
+
 
     public function getId(): ?int
     {
@@ -62,15 +73,43 @@ class Raid
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDayOne(): ?bool
     {
-        return $this->date;
+        return $this->dayOne;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDayOne(?bool $dayOne): self
     {
-        $this->date = $date;
+        $this->dayOne = $dayOne;
 
         return $this;
     }
+
+    public function getDayTwo(): ?bool
+    {
+        return $this->dayTwo;
+    }
+
+    public function setDayTwo(?bool $dayTwo): self
+    {
+        $this->dayTwo = $dayTwo;
+
+        return $this;
+    }
+
+    public function getDayThree(): ?bool
+    {
+        return $this->dayThree;
+    }
+
+    public function setDayThree(?bool $dayThree): self
+    {
+        $this->dayThree = $dayThree;
+
+        return $this;
+    }
+
+
+
+
 }

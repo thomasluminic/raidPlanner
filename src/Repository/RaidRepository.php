@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Character;
 use App\Entity\Raid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,7 +21,17 @@ class RaidRepository extends ServiceEntityRepository
         parent::__construct($registry, Raid::class);
     }
 
-    // /**
+    public function resumeUserCharacter()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('count(r.userCharacter) total')
+            ->addSelect('ch.name')
+            ->join(Character::class, 'ch', Join::WITH, 'ch.id = r.userCharacter')
+            ->groupBy('ch.name')
+            ->getQuery()
+            ->getResult();
+    }
+    // /*
     //  * @return Raid[] Returns an array of Raid objects
     //  */
     /*
