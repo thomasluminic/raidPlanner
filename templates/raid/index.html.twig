@@ -7,9 +7,13 @@
         <div class="row mb-5 mt-5">
             <div class="col-5 d-flex bg-primary rounded border-dark text-light p-2">
                 <div class="col-6">
-                    {% for characterRaid in resumeCharacterRaid %}
-                        <p>{{ characterRaid.name }} : {{ characterRaid.total }}</p>
-                    {% endfor %}
+                    {% if resumeCharacterRaid %}
+                        {% for characterRaid in resumeCharacterRaid %}
+                            <p>{{ characterRaid.name }} : {{ characterRaid.total }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>Vous n'avez pas encore de personnages <a href="{{ path('character') }}">Ici</a></p>
+                    {% endif %}
                 </div>
                 <div class="col-6">
                     <p>Nombre personne lundi : {{ resumeRaid[0] }}</p>

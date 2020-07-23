@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Medusa Gothic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Medusa Gothic'),
+  url('../font/MedusaGothic.otf') format('opentype');
+}
+@font-face {
+  font-family: "Calibri";
+  font-style: normal;
+  font-weight: normal;
+  src: local('Calibri'),
+  url('../font/Calibri.ttf') format('truetype');
+}
+h1,h2,h3,h4,h5 {
+  font-family: "Medusa Gothic", sans-serif;
+}
+.nav-title {
+  font-family: "Medusa Gothic", sans-serif;
+}
+p, label, td {
+  font-family: "Calibri", sans-serif;
+}

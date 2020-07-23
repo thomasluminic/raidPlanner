@@ -4,20 +4,21 @@
 
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h2>Mes personnages</h2>
-                <ul>
+        <div class="row mt-5">
+            <div class="col-5 bg-primary rounded text-light p-2">
+                <h2 class="text-center">Mes personnages</h2>
+                <ul class="list-group">
                     {% for myCharacter in myCharacters %}
-                        <li>{{ myCharacter.name }}</li>
+                        <li class="list-group-item list-group-item-dark">{{ myCharacter.name }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-6">
-                <h2>Ajouter un personnages à ma liste</h2>
+            <div class="offset-2"></div>
+            <div class="col-5  bg-primary rounded text-light p-2">
+                <h2 class="text-center">Ajouter à ma liste</h2>
             {{ form_start(form) }}
                 {{ form_row(form.character) }}
-                <button class="btn btn-primary">Ajoutez</button>
+                <button class="btn btn-dark m-1">Ajoutez</button>
             {{ form_end(form)}}
             </div>
         </div>

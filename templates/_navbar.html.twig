@@ -1,7 +1,8 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('raid') }}">
-        <img src="{{ asset('build/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="logo">
+        <img src="{{ asset('build/logo.png') }}" width="40" height="40" class="d-inline-block align-top" alt="logo">
     </a>
-    <a href="{{ path('character') }}">Mes personnages</a>
-    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    <a class="text-light nav-title" href="{{ path('raid') }}">Raids</a>
+    <a class="text-light nav-title" href="{{ path('character') }}">Mes personnages</a>
+    <a class="text-light nav-title" href="{{ path('app_logout') }}">Se déconnecter</a>
 </nav>
