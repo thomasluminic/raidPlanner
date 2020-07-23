@@ -3,31 +3,45 @@
 {% block title %}Inscription Raid{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Inscription Raid</h1>
+    <div class="container-fluid w-75">
+        <div class="row mb-5 mt-5">
+            <div class="col-5 d-flex bg-primary rounded border-dark text-light p-2">
+                <div class="col-6">
+                    {% for characterRaid in resumeCharacterRaid %}
+                        <p>{{ characterRaid.name }} : {{ characterRaid.total }}</p>
+                    {% endfor %}
+                </div>
+                <div class="col-6">
+                    <p>Nombre personne lundi : {{ resumeRaid[0] }}</p>
+                    <p>Nombre personne mardi : {{ resumeRaid[1] }}</p>
+                    <p>Nombre personne jeudi : {{ resumeRaid[2] }}</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                Résumer tableaux
-            </div>
-            <div class="col-6">
-                {{ form_start(form, {'attr': {'class': 'd-flex'}}) }}
-                    <div class="form-check">
-                        {{ form_row(form.day1, {'value': monday}) }}
-                        {{ form_label(form.day1, 'Lundi ' ~ monday, {'attr': {'class': 'form-check-label'} }) }}
+            <div class="offset-2"></div>
+            <div class="col-5 bg-primary p-2 rounded border-dark text-light">
+                {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-12">
+                            {{ form_row(form.userCharacter) }}
+                        </div>
                     </div>
-                    <div class="form-check">
-                        {{ form_row(form.day2) }}
-                        {{ form_label(form.day1, 'Mardi ' ~ tuesday, {'attr': {'class': 'form-check-label' }} ) }}
+                    <div class="row">
+                        <div class="col-12 d-flex">
+                            <div class="form-check mr-2">
+                                {{ form_row(form.dayOne) }}
+                                {{ form_label(form.dayOne, 'Lundi ' ~ monday, {'attr': {'class': 'form-check-label'} }) }}
+                            </div>
+                            <div class="form-check mr-2">
+                                {{ form_row(form.dayTwo) }}
+                                {{ form_label(form.dayTwo, 'Mardi ' ~ tuesday, {'attr': {'class': 'form-check-label' }} ) }}
+                            </div>
+                            <div class="form-check">
+                                {{ form_row(form.dayThree) }}
+                                {{ form_label(form.dayThree, 'Jeudi ' ~ friday, {'attr': {'class': 'form-check-label' }} ) }}
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        {{ form_row(form.day3) }}
-                        {{ form_label(form.day1, 'Jeudi ' ~ friday, {'attr': {'class': 'form-check-label' }} ) }}
-                    </div>
-                    <button class="btn btn-primary">S'inscrire</button>
+                    <button class="btn btn-dark text-light">S'inscrire</button>
                 {{ form_end(form) }}
             </div>
         </div>
@@ -46,7 +60,7 @@
                     </thead>
                     <tbody>
                     {% for raid in raids %}
-                        {% include '_table.html.twig' %}
+                        {% include 'raid/_table.html.twig' %}
                     {% endfor %}
                     </tbody>
                 </table>
