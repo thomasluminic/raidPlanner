@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription Raid{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Inscription Raid</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Résumer tableaux
+            </div>
+            <div class="col-6">
+                {{ form_start(form, {'attr': {'class': 'd-flex'}}) }}
+                    <div class="form-check">
+                        {{ form_row(form.day1, {'value': monday}) }}
+                        {{ form_label(form.day1, 'Lundi ' ~ monday, {'attr': {'class': 'form-check-label'} }) }}
+                    </div>
+                    <div class="form-check">
+                        {{ form_row(form.day2) }}
+                        {{ form_label(form.day1, 'Mardi ' ~ tuesday, {'attr': {'class': 'form-check-label' }} ) }}
+                    </div>
+                    <div class="form-check">
+                        {{ form_row(form.day3) }}
+                        {{ form_label(form.day1, 'Jeudi ' ~ friday, {'attr': {'class': 'form-check-label' }} ) }}
+                    </div>
+                    <button class="btn btn-primary">S'inscrire</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Pseudo</th>
+                        <th scope="col">Classe</th>
+                        <th scope="col">Lundi</th>
+                        <th scope="col">Mardi</th>
+                        <th scope="col">Jeudi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for raid in raids %}
+                        {% include '_table.html.twig' %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
